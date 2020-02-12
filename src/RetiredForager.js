@@ -1,3 +1,25 @@
 var RetiredForagerBee = function() {
+  ForagerBee.call(this);
+
+  this.age = 40;
+  this.job = 'gamble';
+  this.canFly = false;
+  this.color = 'grey';
+  this.luck = 100;
 };
 
+RetiredForagerBee.prototype = Object.create(ForagerBee.prototype);
+
+RetiredForagerBee.prototype.constructor = RetiredForagerBee;
+
+RetiredForagerBee.prototype.forage = function() {
+  return "I am too old, let me play cards instead";
+}
+
+RetiredForagerBee.prototype.gamble = function() {
+  if (Math.random() * 100 < this.luck) {
+    this.treasureChest.push('treasure');
+    return true;
+  }
+  return false;
+}
